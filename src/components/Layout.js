@@ -7,16 +7,16 @@ const LayoutWrapper = styled.div`
   display: flex;
   width: max;
   height: max;
-  overflow: hidden; /* убираем скроллы */
+  overflow: hidden; 
 `;
 
 const MainContent = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center; /* центрируем горизонтально */
-  align-items: center;     /* центрируем вертикально */
+  justify-content: center; 
+  align-items: center;     
   background: #f7f4f1;
-  overflow: hidden;        /* гарантируем отсутствие скроллов */
+  overflow: hidden;        
 `;
 
 const Layout = ({ children }) => (

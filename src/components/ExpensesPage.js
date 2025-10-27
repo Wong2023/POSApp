@@ -5,7 +5,7 @@ import {
   ActionButtons, Toast, TopBar, DatePickerStyled, SearchInput, SummaryBar,
 } from "../styles/ExpensesStyles";
 
-export default function ExpensesPage({ expanded }) {
+const ExpensesPage = ({ expanded }) => {
   const [expenses, setExpenses] = useState(() =>
     JSON.parse(localStorage.getItem("expenses") || "[]")
   );
@@ -117,3 +117,5 @@ export default function ExpensesPage({ expanded }) {
     </PageWrapper>
   );
 }
+
+export default ExpensesPage;

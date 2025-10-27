@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  SettingsItem,
-  EditButton,
-  TaxesContent,
-  SaveButton
+  SettingsItem, EditButton, TaxesContent, SaveButton
 } from "../../styles/SettingsStyles";
 
 const TaxesSection = ({ setToastMessage }) => {
@@ -11,13 +8,16 @@ const TaxesSection = ({ setToastMessage }) => {
   const [tempTaxText, setTempTaxText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
-
-  useEffect(() => {
+  const loadTaxesData = () => {
     const savedTaxes = localStorage.getItem("taxes-text");
     if (savedTaxes) {
       setTaxText(savedTaxes);
       setTempTaxText(savedTaxes);
     }
+  };
+
+  useEffect(() => {
+    loadTaxesData();
   }, []);
 
   const handleSaveTaxes = () => {
@@ -34,29 +34,27 @@ const TaxesSection = ({ setToastMessage }) => {
     setIsOpen(false);
   };
 
+  const toggleEdit = (e) => {
+    e.stopPropagation();
+    if (editMode) handleClose();
+    else {
+      setIsOpen(true);
+      setEditMode(true);
+    }
+  };
+
   return (
     <SettingsItem open={isOpen}>
       <div
         className="item-header"
-        onClick={() => {
-          if (!editMode) setIsOpen((prev) => !prev);
-        }}
+        onClick={() => !editMode && setIsOpen((p) => !p)}
       >
         <span>Taxes & Currency</span>
-        <EditButton
-          onClick={(e) => {
-            e.stopPropagation();
-            if (editMode) {
-              handleClose();
-            } else {
-              setIsOpen(true);
-              setEditMode(true);
-            }
-          }}
-        >
+        <EditButton onClick={toggleEdit}>
           {editMode ? "Close" : "Edit"}
         </EditButton>
       </div>
+
       <div className="item-body">
         <div className="item-body-inner">
           {editMode ? (

@@ -51,7 +51,7 @@ const loadOrders = () => {
   catch { return []; }
 };
 
-export default function StatsLogic({ expanded }) {
+const StatsLogic = (expanded) => {
   const all = loadOrders(), now = new Date();
   const [mode, setMode] = useState("DAY");
   const [day, setDay] = useState(now.toISOString().split("T")[0]);
@@ -83,3 +83,5 @@ export default function StatsLogic({ expanded }) {
       totalRevenue, totalQty, ordersCount, grand, years }} />
   );
 }
+
+export default StatsLogic;

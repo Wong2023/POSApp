@@ -16,7 +16,7 @@ import {
   FaTv,
   FaCog,
   FaMoneyBill,
-  FaChartBar, // ✅ иконка для Statistics
+  FaChartBar, 
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -26,7 +26,6 @@ const Sidebar = () => {
 
   return (
     <SidebarWrapper>
-      {/* Профильный блок */}
       <SidebarIcon onClick={() => navigate("/profile")}>
         <IconCircle>P</IconCircle>
         <IconName>User</IconName>
@@ -34,8 +33,6 @@ const Sidebar = () => {
       </SidebarIcon>
 
       <Spacer grow={2} />
-
-      {/* Центральные элементы */}
       <MiddleItemsGroup>
         <SidebarItem
           onClick={() => navigate("/dashboard")}
@@ -56,8 +53,6 @@ const Sidebar = () => {
           </IconWrapper>
           <span>Catalog</span>
         </SidebarItem>
-
-        {/* ✅ Новый пункт Statistics */}
         <SidebarItem
           onClick={() => navigate("/stats")}
           className={location.pathname === "/stats" ? "active" : ""}
@@ -68,7 +63,6 @@ const Sidebar = () => {
           <span>Statistics</span>
         </SidebarItem>
 
-        {/* ✅ Expenses */}
         <SidebarItem
           onClick={() => navigate("/expenses")}
           className={location.pathname === "/expenses" ? "active" : ""}
@@ -92,7 +86,6 @@ const Sidebar = () => {
 
       <Spacer grow={3} />
 
-      {/* Нижний элемент */}
       <SidebarItem
         onClick={() => navigate("/settings")}
         className={location.pathname === "/settings" ? "active" : ""}

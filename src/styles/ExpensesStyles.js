@@ -140,6 +140,9 @@ export const ExpenseItem = styled.div`
   }
 `;
 
+// TODO
+// FIXME
+
 export const ExpenseInfo = styled.div`
   font-size: 0.95rem;
   line-height: 1.4;

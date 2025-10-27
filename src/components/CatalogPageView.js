@@ -6,12 +6,11 @@ import {
   ModalActions, SaveButton, CancelButton, CloseButton,
 } from "../styles/CatalogStyles";
 
-export default function CatalogPageView({
-  expanded, activeTab, setActiveTab, items,
+const CatalogPageView = ({ expanded, activeTab, setActiveTab, items,
   showItemModal, setShowItemModal, showCatalogModal, setShowCatalogModal,
   newItem, setNewItem, editMode, handleSaveItem, handleDelete,
-  openEditModal, openAddModal, navigate
-}) {
+  openEditModal, openAddModal, navigate }) => {
+
   const render = () => {
     const arr = [];
     const cats = activeTab === "all" ? Object.keys(items) : [activeTab];
@@ -98,3 +97,6 @@ export default function CatalogPageView({
     </CatalogContainer>
   );
 }
+
+
+export default CatalogPageView;

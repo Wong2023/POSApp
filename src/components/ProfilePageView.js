@@ -5,11 +5,9 @@ import {
   Button, ButtonDanger, ButtonWrapper, SaveButton, Toast, accent
 } from "../styles/ProfileStyles";
 
-export default function ProfilePageView({
-  onLogout, profile, tempProfile, editing, handleChange,
+const ProfilePageView = ({ onLogout, profile, tempProfile, editing, handleChange,
   handleEditToggle, handleSave, editingPassword, handlePasswordEditToggle,
-  handlePasswordChange, passwords, handlePasswordSave, toast
-}) {
+  handlePasswordChange, passwords, handlePasswordSave, toast }) => {
   const field = (label, name, type = "text") => (
     <InputWrapper>
       <InputLabel>{label}</InputLabel>
@@ -117,3 +115,5 @@ export default function ProfilePageView({
     </Container>
   );
 }
+
+export default ProfilePageView;

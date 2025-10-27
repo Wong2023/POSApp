@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  SettingsItem,
-  EditButton,
-  BusinessInfoForm
-} from "../../styles/SettingsStyles";
+import { SettingsItem, EditButton, BusinessInfoForm } from "../../styles/SettingsStyles";
 
 const defaultFields = {
-  businessName: "",
-  phone: "",
-  businessAddress: "",
-  email: "",
-  cityZip: "",
-  country: "",
-  website: "",
+  businessName: "", phone: "", businessAddress: "", email: "",
+  cityZip: "", country: "", website: "",
 };
 
 const BusinessInfoSection = ({ setToastMessage }) => {
@@ -20,18 +11,19 @@ const BusinessInfoSection = ({ setToastMessage }) => {
   const [tempFields, setTempFields] = useState(defaultFields);
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
-
-  useEffect(() => {
+  const loadBusinessInfo = () => {
     const saved = localStorage.getItem("business-info");
     if (saved) {
-      setFields(JSON.parse(saved));
-      setTempFields(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      setFields(parsed);
+      setTempFields(parsed);
     }
-  }, []);
-
-  const handleChange = (e) => {
-    setTempFields((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
+
+  useEffect(() => { loadBusinessInfo(); }, []);
+
+  const handleChange = (e) =>
+    setTempFields((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -47,68 +39,56 @@ const BusinessInfoSection = ({ setToastMessage }) => {
     setEditMode(false);
     setIsOpen(false);
   };
+
+  const toggleEdit = (e) => {
+    e.stopPropagation();
+    if (editMode) {
+      handleClose();
+    } else {
+      setIsOpen(true);
+      setEditMode(true);
+    }
+  };
+
   return (
     <SettingsItem open={isOpen}>
-      <div
-        className="item-header"
-        onClick={() => {
-          if (!editMode) setIsOpen((prev) => !prev);
-        }}>
+      <div className="item-header" onClick={() => !editMode && setIsOpen((p) => !p)}>
         <span>Business Info</span>
-        <EditButton
-          onClick={(e) => {
-            e.stopPropagation();
-            if (editMode) {
-              handleClose();
-            } else {
-              setIsOpen(true);
-              setEditMode(true);
-            }
-          }}>
-          {editMode ? "Close" : "Edit"}
-        </EditButton>
+        <EditButton onClick={toggleEdit}>{editMode ? "Close" : "Edit"}</EditButton>
       </div>
+
       <div className="item-body">
         <div className="item-body-inner">
           <BusinessInfoForm onSubmit={handleSave} autoComplete="off">
-            <div className="inputs-row">
-              <div>
-                <label>Business Name</label>
-                <input name="businessName" value={tempFields.businessName} onChange={handleChange} disabled={!editMode}/>
+            {[
+              ["Business Name", "businessName", "Phone Number", "phone"],
+              ["Business Address", "businessAddress", "Email Address", "email"],
+              ["City & ZIP Code", "cityZip", "Country", "country"],
+              ["Website", "website", "", ""],
+            ].map(([l1, n1, l2, n2], i) => (
+              <div className="inputs-row" key={i}>
+                <div>
+                  <label>{l1}</label>
+                  <input
+                    name={n1}
+                    value={tempFields[n1]}
+                    onChange={handleChange}
+                    disabled={!editMode}
+                  />
+                </div>
+                {n2 && (
+                  <div>
+                    <label>{l2}</label>
+                    <input
+                      name={n2}
+                      value={tempFields[n2]}
+                      onChange={handleChange}
+                      disabled={!editMode}
+                    />
+                  </div>
+                )}
               </div>
-              <div>
-                <label>Phone Number</label>
-                <input name="phone" value={tempFields.phone} onChange={handleChange} disabled={!editMode}/>
-              </div>
-            </div>
-
-            <div className="inputs-row">
-              <div>
-                <label>Business Address</label>
-                <input name="businessAddress" value={tempFields.businessAddress} onChange={handleChange} disabled={!editMode}/>
-              </div>
-              <div>
-                <label>Email Address</label>
-                <input name="email" value={tempFields.email} onChange={handleChange} disabled={!editMode}/>
-              </div>
-            </div>
-            <div className="inputs-row">
-              <div>
-                <label>City & ZIP Code</label>
-                <input name="cityZip" value={tempFields.cityZip} onChange={handleChange} disabled={!editMode}/>
-              </div>
-              <div>
-                <label>Country</label>
-                <input name="country" value={tempFields.country} onChange={handleChange}disabled={!editMode}/>
-              </div>
-            </div>
-            <div className="inputs-row">
-              <div>
-                <label>Website</label>
-                <input name="website" value={tempFields.website} onChange={handleChange} disabled={!editMode}/>
-              </div>
-              <div></div>
-            </div>
+            ))}
             {editMode && <button className="save-btn">Save Changes</button>}
           </BusinessInfoForm>
         </div>

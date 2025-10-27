@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogPageView from "./CatalogPageView";
 
-export default function CatalogPage({ expanded }) {
+const CatalogPage = ({ expanded }) => {
   const navigate = useNavigate();
   const all = {
     coffee: [{ name: "Americano", price: "€2.50", size: "Medium" }, { name: "Latte", price: "€3.00", size: "Large" }],
@@ -68,3 +68,5 @@ export default function CatalogPage({ expanded }) {
     </>
   );
 }
+
+export default CatalogPage;

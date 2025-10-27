@@ -26,7 +26,7 @@ const defaultPermissions = {
   },
 };
 
-export default function PermissionsSection() {
+const PermissionsSection = () => {
   const [permissions, setPermissions] = useState(defaultPermissions);
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -87,3 +87,5 @@ export default function PermissionsSection() {
     </SettingsItem>
   );
 }
+
+export default PermissionsSection;

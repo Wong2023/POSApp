@@ -5,11 +5,11 @@ import {
   TableBodyScroll, TableRow, TotalsRow, List, ListRow,
 } from "../styles/StatsStyles";
 
-export default function StatsView({
+const StatsView = ({
   expanded, mode, setMode, day, setDay, week, setWeek, month, setMonth,
   year, setYear, search, setSearch, rows = [], totalRevenue = 0,
   totalQty = 0, ordersCount = 0, grand = 0, years = [],
-}) {
+}) => {
   const top = Array.isArray(rows) ? rows.slice(0, 20) : [];
   const fmt = (v) => (isNaN(v) ? "0.00" : v.toFixed(2));
 
@@ -97,3 +97,5 @@ export default function StatsView({
     </StatsWrapper>
   );
 }
+
+export default StatsView;

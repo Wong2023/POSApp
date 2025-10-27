@@ -7,7 +7,8 @@ import {
   OrderItemInfo, HiddenActions, Summary, PayButton,
 } from "../styles/OrderPageStyles";
 
-export default function OrderPage({ expanded }) {
+// export default function OrderPage({ expanded }) {
+const OrderPage = ({ expanded }) => {
   const nav = useNavigate();
   const products = {
     coffee: [
@@ -135,3 +136,5 @@ export default function OrderPage({ expanded }) {
     </OrderPageContainer>
   );
 }
+
+export  default OrderPage;

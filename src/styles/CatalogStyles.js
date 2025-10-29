@@ -4,7 +4,7 @@ export const CatalogContainer = styled.div`
   flex: 1;
   padding: 20px;
   transition: margin-left 0.9s ease;
-  margin-left: ${({ expanded }) => (expanded ? "270px" : "100px")};
+  margin-left: ${({ $expanded }) => ($expanded ? "270px" : "100px")};
   background: #f9f7f3;
 `;
 
@@ -28,8 +28,8 @@ export const Tabs = styled.div`
 `;
 
 export const TabButton = styled.button`
-  background: ${({ active }) => (active ? "#5c0a1f" : "#ece7e2")};
-  color: ${({ active }) => (active ? "white" : "black")};
+  background: ${({ $active }) => ($active ? "#5c0a1f" : "#ece7e2")};
+  color: ${({ $active }) => ($active ? "white" : "black")};
   border: none;
   width: 200px;
   padding: 13px 20px;
@@ -39,7 +39,7 @@ export const TabButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: ${({ active }) => (active ? "#660018" : "#e0e0e0")};
+    background: ${({ $active }) => ($active ? "#660018" : "#e0e0e0")};
   }
 `;
 

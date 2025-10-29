@@ -43,7 +43,7 @@ const OrderHistoryPage = ({ expanded }) => {
   }, {});
 
   return (
-    <PageWrapper expanded={expanded}>
+    <PageWrapper $expanded={expanded}>
       <Header>
         <Title>Order History</Title>
         <NewOrderButton onClick={() => navigate("/order")}>
@@ -53,7 +53,7 @@ const OrderHistoryPage = ({ expanded }) => {
 
       <Tabs>
         {["ALL", "DAY", "MONTH", "YEAR"].map((tab) => (
-          <Tab key={tab} active={activeTab === tab} onClick={() => setActiveTab(tab)}>
+          <Tab key={tab} $active={activeTab === tab} onClick={() => setActiveTab(tab)}>
             {tab}
           </Tab>
         ))}
@@ -96,7 +96,7 @@ const OrderHistoryPage = ({ expanded }) => {
                       {(order[f] || 0).toFixed(2)}
                     </DetailRow>
                   ))}
-                  <DetailRow highlight>
+                  <DetailRow $highlight>
                     <b>Total:</b> €{(order.total || 0).toFixed(2)}
                   </DetailRow>
 

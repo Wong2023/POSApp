@@ -57,16 +57,16 @@ export const Tab = styled.button`
   border: none;
   font-weight: 600;
   cursor: pointer;
-  background: ${(props) => (props.active ? "#5c0a1f" : "#ece7e2")};
-  color: ${(props) => (props.active ? "white" : "black")};
+  background: ${(props) => (props.$active ? "#5c0a1f" : "#ece7e2")};
+  color: ${(props) => (props.$active ? "white" : "black")};
   transition: background 0.2s;
   box-shadow: ${(props) =>
-    props.active
+    props.$active
       ? "0px 4px 8px rgba(0,0,0,0.25)"
       : "inset 0 2px 4px rgba(0,0,0,0.1)"};
 
   &:hover {
-    background: ${(props) => (props.active ? "#7a1224" : "#e6e6e6")};
+    background: ${(props) => (props.$active ? "#7a1224" : "#e6e6e6")};
   }
 `;
 
@@ -137,8 +137,8 @@ export const DetailRow = styled.p`
   display: flex;
   justify-content: space-between;
   font-size: 0.95rem;
-  color: ${(props) => (props.highlight ? "#5c0a1f" : "#333")};
-  font-weight: ${(props) => (props.highlight ? "700" : "400")};
+  color: ${(props) => (props.$highlight ? "#5c0a1f" : "#333")};
+  font-weight: ${(props) => (props.$highlight ? "700" : "400")};
 `;
 
 export const ItemsList = styled.ul`

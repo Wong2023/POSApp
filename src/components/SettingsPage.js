@@ -13,12 +13,12 @@ import UsersSection from "./componentsB/UsersSection";
 import PermissionsSection from "./componentsB/PermissionsSection";
 import TaxesSection from "./componentsB/TaxesSection";
 
-const SettingsPage = ({ expanded }) => {
+const SettingsPage = ({ $expanded }) => {
   const [toastMessage, setToastMessage] = useState("");
   const navigate = useNavigate();
 
   return (
-    <Content expanded={expanded}>
+    <Content $expanded={$expanded}>
       <Header>
         <div>
           <span>12332</span>

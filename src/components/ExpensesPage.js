@@ -5,14 +5,14 @@ import {
   ActionButtons, Toast, TopBar, DatePickerStyled, SearchInput, SummaryBar,
 } from "../styles/ExpensesStyles";
 
-const ExpensesPage = ({ expanded }) => {
+const ExpensesPage = ({ $expanded }) => {
   const [expenses, setExpenses] = useState(() =>
     JSON.parse(localStorage.getItem("expenses") || "[]")
   );
   const [form, setForm] = useState({ name: "", quantity: "", price: "" });
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState(null);
-  const [toast, setToast] = useState({ show: false, message: "", type: "error" });
+  const [toast, setToast] = useState({ $show: false, message: "", type: "error" });
   const [selectedDate, setSelectedDate] = useState(""), [search, setSearch] = useState("");
 
   useEffect(() => localStorage.setItem("expenses", JSON.stringify(expenses)), [expenses]);
@@ -25,8 +25,8 @@ const ExpensesPage = ({ expanded }) => {
   };
 
   const showToast = (msg, type = "error") => {
-    setToast({ show: true, message: msg, type });
-    setTimeout(() => setToast({ show: false, message: "", type }), 3000);
+    setToast({ $show: true, message: msg, type });
+    setTimeout(() => setToast({ $show: false, message: "", type }), 3000);
   };
 
   const saveExpense = () => {
@@ -66,7 +66,7 @@ const ExpensesPage = ({ expanded }) => {
   );
 
   return (
-    <PageWrapper expanded={expanded}>
+    <PageWrapper $expanded={$expanded}>
       <Header>
         <Title>Expenses</Title>
         <AddButton onClick={() => setShowForm(!showForm)}>
@@ -113,7 +113,7 @@ const ExpensesPage = ({ expanded }) => {
         <SummaryBar>Total for {selectedDate}: <b>€{total.toFixed(2)}</b></SummaryBar>
       )}
 
-      <Toast show={toast.show} type={toast.type}>{toast.message}</Toast>
+      <Toast $show={toast.$show} type={toast.type}>{toast.message}</Toast>
     </PageWrapper>
   );
 }

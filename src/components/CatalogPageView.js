@@ -41,7 +41,7 @@ const CatalogPageView = ({ expanded, activeTab, setActiveTab, items,
 
       <Tabs>
         {["all", "coffee", "teas", "food"].map(t => (
-          <TabButton key={t} active={activeTab === t} onClick={() => setActiveTab(t)}>
+          <TabButton key={t} $active={activeTab === t} onClick={() => setActiveTab(t)}>
             {t === "all" ? "ALL PRODUCTS" : t === "teas" ? "TEAS & LATTES" : t.toUpperCase()}
           </TabButton>
         ))}

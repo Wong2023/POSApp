@@ -8,7 +8,7 @@ import {
 } from "../styles/OrderPageStyles";
 
 // export default function OrderPage({ expanded }) {
-const OrderPage = ({ expanded }) => {
+const OrderPage = ({ $expanded }) => {
   const nav = useNavigate();
   const products = {
     coffee: [
@@ -81,12 +81,12 @@ const OrderPage = ({ expanded }) => {
     });
   };
   return (
-    <OrderPageContainer expanded={expanded}>
+    <OrderPageContainer $expanded={$expanded}>
       <LeftPanel>
         <TabsContainer>
           <Tabs>
             {["all", "coffee", "teas", "food"].map((t) => (
-              <Tab key={t} active={tab === t} onClick={() => setTab(t)}>
+              <Tab key={t} $active={tab === t} onClick={() => setTab(t)}>
                 {t === "teas" ? "TEAS & LATTES" : t.toUpperCase()}
               </Tab>
             ))}
@@ -114,7 +114,7 @@ const OrderPage = ({ expanded }) => {
                   {i.qty} × {i.name} — {i.price}
                 </OrderItemInfo>
               </OrderItem>
-              <HiddenActions visible={sel === k}>
+              <HiddenActions $visible={sel === k}>
                 <button className="plus" onClick={() => qty(i.name, 1)}>+</button>
                 <button className="edit">✎</button>
                 <button className="delete" onClick={() => remove(i.name)}>✕</button>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CatalogPageView from "./CatalogPageView";
 
-const CatalogPage = ({ expanded }) => {
+const CatalogPage = ({ $expanded }) => {
   const navigate = useNavigate();
   const all = {
     coffee: [{ name: "Americano", price: "€2.50", size: "Medium" }, { name: "Latte", price: "€3.00", size: "Large" }],
@@ -53,7 +53,7 @@ const CatalogPage = ({ expanded }) => {
   return (
     <>
       <CatalogPageView
-        {...{ expanded, activeTab: tab, setActiveTab: setTab, items, showItemModal: showItem, setShowItemModal: setShowItem,
+        {...{ $expanded, activeTab: tab, setActiveTab: setTab, items, showItemModal: showItem, setShowItemModal: setShowItem,
           showCatalogModal: showCat, setShowCatalogModal: setShowCat, newItem, setNewItem: setNew, editMode: edit,
           handleSaveItem: save, handleDelete: del, openEditModal: editItem, openAddModal: add, navigate }}
       />

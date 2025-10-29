@@ -25,7 +25,6 @@ export const SidebarWrapper = styled.div`
   }
 `;
 
-/* Блок иконки профиля */
 export const SidebarIcon = styled.div`
   width: 70px;
   display: flex;
@@ -41,7 +40,6 @@ export const SidebarIcon = styled.div`
   }
 `;
 
-/* Сам круг */
 export const IconCircle = styled.div`
   width: 45px;
   height: 45px;
@@ -57,7 +55,6 @@ export const IconCircle = styled.div`
   margin-right: 20px;
 `;
 
-/* Имя */
 export const IconName = styled.div`
   font-size: 1.1rem;
   font-weight: bold;
@@ -66,14 +63,12 @@ export const IconName = styled.div`
   margin-right: 20px;
 `;
 
-/* Доп. текст */
 export const IconText = styled.div`
   font-size: 0.9rem;
   color: #732031;
   margin-right: 20px;
 `;
 
-/* Элемент списка */
 export const SidebarItem = styled.div`
   position: relative;
   margin-left: 10px;
@@ -144,7 +139,7 @@ export const IconWrapper = styled.div`
     width: 55px;
     height: 45px;
     border-radius: 25px;
-    background: ${(props) => (props.active ? "#f9f7f3" : "transparent")};
+    background: ${(props) => (props.$active ? "#f9f7f3" : "transparent")};
     left: -17px;
     top: 0;
     z-index: 0;
@@ -164,7 +159,7 @@ export const IconWrapper = styled.div`
 `;
 
 export const Spacer = styled.div`
-  flex-grow: ${(props) => props.grow || 1};
+  flex-grow: ${(props) => props.$grow || 1};
 `;
 
 export const MiddleItemsGroup = styled.div`

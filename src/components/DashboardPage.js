@@ -6,7 +6,7 @@ import {
 } from "../styles/DashboardStyles";
 import { useNavigate } from "react-router-dom";
 
-const DashboardPage = ({ expanded }) => {
+const DashboardPage = ({ $expanded }) => {
   const navigate = useNavigate();
   const [todayOrders, setTodayOrders] = useState([]);
   const [todayRevenue, setTodayRevenue] = useState(0);
@@ -22,7 +22,7 @@ const DashboardPage = ({ expanded }) => {
   useEffect(() => { loadTodayData(); }, []);
 
   return (
-    <DashboardWrapper expanded={expanded}>
+    <DashboardWrapper $expanded={$expanded}>
       <Header>
         <Welcome>
           Dashboard

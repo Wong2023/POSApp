@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PageWrapper = styled.div`
   flex-grow: 1;
   padding: 20px;
-  margin-left: ${(props) => (props.expanded ? "290px" : "100px")};
+  margin-left: ${(props) => (props.$expanded ? "290px" : "100px")};
   transition: margin-left 0.9s ease;
 `;
 
@@ -201,8 +201,8 @@ export const Toast = styled.div`
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: ${(props) => (props.show ? 1 : 0)};
-  transform: translateY(${(props) => (props.show ? "0" : "20px")});
+  opacity: ${(props) => (props.$show ? 1 : 0)};
+  transform: translateY(${(props) => (props.$show ? "0" : "20px")});
   transition: all 0.4s ease;
   z-index: 2000;
 `;

@@ -51,7 +51,7 @@ const loadOrders = () => {
   catch { return []; }
 };
 
-const StatsLogic = (expanded) => {
+const StatsLogic = ($expanded) => {
   const all = loadOrders(), now = new Date();
   const [mode, setMode] = useState("DAY");
   const [day, setDay] = useState(now.toISOString().split("T")[0]);
@@ -78,7 +78,7 @@ const StatsLogic = (expanded) => {
   const years = [...new Set(all.map((o) => parseDate(o.date)?.getFullYear()))].filter(Boolean);
 
   return (
-    <StatsView {...{ expanded, mode, setMode, day, setDay, week, setWeek,
+    <StatsView {...{ $expanded, mode, setMode, day, setDay, week, setWeek,
       month, setMonth, year, setYear, search, setSearch, rows,
       totalRevenue, totalQty, ordersCount, grand, years }} />
   );

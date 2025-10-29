@@ -6,7 +6,7 @@ export const OrderPageContainer = styled.div`
   background: #faf7f2;
   min-height: 100vh;
   padding: 20px;
-  margin-left: ${(props) => (props.expanded ? "250px" : "70px")};
+  margin-left: ${(props) => (props.$expanded ? "250px" : "70px")};
   transition: margin-left 0.6s ease;
 `;
 
@@ -169,7 +169,7 @@ export const HiddenActions = styled.div`
   display: flex;
   gap: 8px;
   margin-left: 10px;
-  opacity: ${(props) => (props.visible ? 1 : 0)};
+  opacity: ${(props) => (props.$visible ? 1 : 0)};
   transition: opacity 0.3s ease;
 
   button {

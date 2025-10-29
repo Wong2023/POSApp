@@ -6,7 +6,7 @@ import {
 } from "../styles/StatsStyles";
 
 const StatsView = ({
-  expanded, mode, setMode, day, setDay, week, setWeek, month, setMonth,
+  $expanded, mode, setMode, day, setDay, week, setWeek, month, setMonth,
   year, setYear, search, setSearch, rows = [], totalRevenue = 0,
   totalQty = 0, ordersCount = 0, grand = 0, years = [],
 }) => {
@@ -14,7 +14,7 @@ const StatsView = ({
   const fmt = (v) => (isNaN(v) ? "0.00" : v.toFixed(2));
 
   return (
-    <StatsWrapper expanded={expanded}>
+    <StatsWrapper $expanded={$expanded}>
       <Header>
         <div className="title-wrap">
           <Title>Sales Statistics</Title>
@@ -23,7 +23,7 @@ const StatsView = ({
         <div>
           <TabsRow>
             {["DAY", "WEEK", "MONTH", "YEAR"].map((t) => (
-              <Tab key={t} active={mode === t} onClick={() => setMode(t)}>{t}</Tab>
+              <Tab key={t} $active={mode === t} onClick={() => setMode(t)}>{t}</Tab>
             ))}
           </TabsRow>
           <FiltersBar>

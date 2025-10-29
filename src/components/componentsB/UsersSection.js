@@ -9,12 +9,24 @@ const UsersSection = ({ setToastMessage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [savingMode, setSavingMode] = useState(false);
+
   const loadUsers = () => {
-    const saved = localStorage.getItem("users");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      setUsers(parsed);
-      setTempUsers(parsed);
+    try {
+      const saved = localStorage.getItem("users");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setUsers(parsed);
+          setTempUsers(parsed);
+        } else {
+          setUsers([]);
+          setTempUsers([]);
+        }
+      }
+    } catch (e) {
+      console.error("Error loading users:", e);
+      setUsers([]);
+      setTempUsers([]);
     }
   };
 
@@ -83,23 +95,25 @@ const UsersSection = ({ setToastMessage }) => {
                 <tr><th>Name</th><th>Role</th><th>Mail</th></tr>
               </thead>
               <tbody>
-                {(savingMode ? tempUsers : users)
-                  .filter(Boolean)
-                  .map((u, i) => (
-                    <tr key={i}>
-                      {["name", "role", "mail"].map((field) => (
-                        <td key={field}>
-                          <input
-                            value={u[field]}
-                            disabled={!editMode}
-                            onChange={(e) =>
-                              handleUserChange(i, field, e.target.value)
-                            }
-                          />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
+                {Array.isArray(savingMode ? tempUsers : users)
+                  ? (savingMode ? tempUsers : users)
+                      .filter(Boolean)
+                      .map((u, i) => (
+                        <tr key={i}>
+                          {["name", "role", "mail"].map((field) => (
+                            <td key={field}>
+                              <input
+                                value={u[field]}
+                                disabled={!editMode}
+                                onChange={(e) =>
+                                  handleUserChange(i, field, e.target.value)
+                                }
+                              />
+                            </td>
+                          ))}
+                        </tr>
+                      ))
+                  : null}
               </tbody>
             </table>
           </UsersTable>
@@ -107,7 +121,7 @@ const UsersSection = ({ setToastMessage }) => {
           {editMode && (
             <AddUserButton
               type="button"
-              saving={savingMode}
+              $saving={savingMode}
               onClick={handleAddUserClick}
             >
               {savingMode ? "Save Users" : "Add New User"}

@@ -6,7 +6,7 @@ export const StatsWrapper = styled.div`
   background: #f9f7f3;
   min-height: 100vh;
   transition: margin-left 0.8s ease;
-  margin-left: ${({ expanded }) => (expanded ? "290px" : "100px")};
+  margin-left: ${({ $expanded }) => ($expanded ? "290px" : "100px")};
 `;
 
 export const Header = styled.div`
@@ -48,8 +48,8 @@ export const Tab = styled.button`
   height: 42px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  background: ${({ active }) => (active ? "#5c0a1f" : "#ece7e2")};
-  color: ${({ active }) => (active ? "#fff" : "#1b1b1b")};
+  background: ${({ $active }) => ($active ? "#5c0a1f" : "#ece7e2")};
+  color: ${({ $active }) => ($active ? "#fff" : "#1b1b1b")};
   font-weight: 700;
   font-size: 14px;
   display: inline-flex;
@@ -62,7 +62,7 @@ export const Tab = styled.button`
   user-select: none;
 
   &:hover {
-    background: ${({ active }) => (active ? "#6d0f22" : "#e7e1db")};
+    background: ${({ $active }) => ($active ? "#6d0f22" : "#e7e1db")};
   }
 `;
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProfilePageView from "./ProfilePageView"; // подключаем верстку
+import ProfilePageView from "./ProfilePageView"; 
 
 const ProfilePage = ({ onLogout }) => {
   const [profile, setProfile] = useState(() => {

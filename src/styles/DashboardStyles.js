@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DashboardWrapper = styled.div`
   flex: 1;
   padding: 25px;
-  padding-left: ${({ expanded }) => (expanded ? "290px" : "100px")};
+  padding-left: ${({ $expanded }) => ($expanded ? "290px" : "100px")};
   transition: padding-left 0.8s ease;
   background: #f9f7f3;
   min-height: 100vh;

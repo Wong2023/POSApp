@@ -27,7 +27,7 @@ export const SaveButton = styled.button`
 export const Content = styled.div`
   flex: 1;
   padding: 40px 60px;
-  margin-left: ${(props) => (props.expanded ? "250px" : "70px")};
+  margin-left: ${(props) => (props.$expanded ? "250px" : "70px")};
   min-height: 100vh;
   transition: margin-left 0.6s ease;
 `;
@@ -234,9 +234,9 @@ export const AddUserButton = styled.button`
   margin-top: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
-  background: ${(props) => (props.saving ? "white" : "#a00032")};
-  color: ${(props) => (props.saving ? "#a00032" : "white")};
-  border: ${(props) => (props.saving ? "1px solid #a00032" : "none")};
+  background: ${(props) => (props.$saving ? "white" : "#a00032")};
+  color: ${(props) => (props.$saving ? "#a00032" : "white")};
+  border: ${(props) => (props.$saving ? "1px solid #a00032" : "none")};
 
   &:hover { opacity: 0.9; }
 `;

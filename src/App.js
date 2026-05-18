@@ -22,8 +22,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {isLoggedIn ? (
-        <Router>
+      {/* ИСПРАВЛЕНО ТУТ: Обернули всё в Router и добавили basename для GitHub Pages */}
+      <Router basename="/software">
+        {isLoggedIn ? (
           <div style={{ display: "flex", width: "100%" }}>
             <div
               onMouseEnter={() => setExpanded(true)}
@@ -62,10 +63,10 @@ function App() {
               />
             </Routes>
           </div>
-        </Router>
-      ) : (
-        <LoginPage onLogin={handleLogin} />
-      )}
+        ) : (
+          <LoginPage onLogin={handleLogin} />
+        )}
+      </Router>
     </>
   );
 }

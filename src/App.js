@@ -22,8 +22,8 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* ИСПРАВЛЕНО ТУТ: Обернули всё в Router и добавили basename для GitHub Pages */}
-      <Router basename="/software">
+      {/* ИСПРАВЛЕНО ТУТ: Базовый путь изменен на /POSApp */}
+      <Router basename="/POSApp">
         {isLoggedIn ? (
           <div style={{ display: "flex", width: "100%" }}>
             <div
